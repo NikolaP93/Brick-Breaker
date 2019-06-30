@@ -1,5 +1,5 @@
 class Ball {
-    constructor(x = 300, y = 250, r = 20, xspeed = 3, yspeed = 3) {
+    constructor(x = 300, y = 250, r = 10, xspeed = 3, yspeed = 3) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -9,7 +9,7 @@ class Ball {
 
     show() {
         fill(0)
-        ellipse(this.x, this.y, this.r * 2);
+        ellipse(this.x, this.y, this.r);
     }
 
     move() {
@@ -27,39 +27,23 @@ class Ball {
             this.yspeed = Math.abs(this.yspeed)
         }
 
+        
 
         this.x += this.xspeed;
         this.y += this.yspeed;
     }
 
     hits(brick) {
-        
-        let xdist = Math.abs(this.x - brick.x + brick.w / 2);
-        let ydist = Math.abs(this.y - brick.y - brick.h/2);
-        
-        if(xdist > (brick.x/2 + this.r)) {
-            return false;
-        }
 
-        if (ydist > (brick.h/2 + this.r)){
-            return false;
-        }
+        if(this.x + this.r >  brick.x &&
+            this.x - this.r < (brick.x + brick.w) &&
+            this.y + this.r >  brick.y &&
+            this.y - this.r < (brick.y + brick.h)) 
+         {  
+           return true; 
+         }
 
-        if(xdist <= (brick.w/2)) {
-            return true;
-        }
-
-        if(ydist <= (brick.h/2)) {
-            return true;
-        }
-
-        let dx = xdist - brick.w/2;
-        let dy = ydist - brick.h/2;
-        if (dx*dx + dy*dy <= (this.r*this.r)) {
-            this.yspeed = -3;
-        } else {
-            console.log("nope")
-        }
-
+         
+         
     }
 }

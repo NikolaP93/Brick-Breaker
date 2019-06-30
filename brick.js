@@ -1,5 +1,5 @@
 class Brick {
-    constructor(x = 300, y = 350, h = 10, w = 50) {
+    constructor(x = 300, y = 350, h = 30, w = 50) {
         this.x = x;
         this.y = y;
         this.h = h;
@@ -7,7 +7,7 @@ class Brick {
     }
 
     show() {
-        fill(255 );
+        
         image(img, this.x, this.y, this.w, this.h);
     }
 
@@ -23,6 +23,8 @@ class Brick {
             }
         }
     }
+
+    
 
 
 }
