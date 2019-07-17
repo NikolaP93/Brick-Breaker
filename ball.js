@@ -12,8 +12,10 @@ class Ball {
         ellipse(this.x, this.y, this.r);
     }
 
+    // check the position of the ball if it's withing boundaries
     move() {
 
+        // if it leaves the width, change direction
         if (this.x > width) {
             this.xspeed = -this.xspeed;
         }
@@ -21,9 +23,13 @@ class Ball {
             this.xspeed = Math.abs(this.xspeed);
         }
 
-        if (this.y > height + 25) {
+        //if it leaves the height, change direction
+
+        if (this.y > height + 50) {
             return true;
-        } if (this.y < 0) {
+        }
+
+        if (this.y < 0) {
             this.yspeed = Math.abs(this.yspeed)
         }
 
@@ -33,7 +39,11 @@ class Ball {
         this.y += this.yspeed;
     }
 
+   
+
     hits(brick) {
+
+        // check if the circle is intersecting with the brick, still need to test if the ball is inside the brick
 
         if(this.x + this.r >  brick.x &&
             this.x - this.r < (brick.x + brick.w) &&
@@ -43,7 +53,7 @@ class Ball {
            return true; 
          }
 
-         
-         
     }
+
+
 }
