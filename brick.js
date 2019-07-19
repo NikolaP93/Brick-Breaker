@@ -7,10 +7,10 @@ class Brick {
     }
 
     show() {
-        
         image(img, this.x, this.y, this.w, this.h);
     }
 
+    // main brick movement
     move() {
         if (this.x > 0) {
             if (keyIsDown(LEFT_ARROW)) {
