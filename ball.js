@@ -1,5 +1,5 @@
 class Ball {
-    constructor(x = 300, y = 250, r = 10, xspeed = 3, yspeed = 3) {
+    constructor(x = width / 2, y = height / 2, r = 10 + height / 500, xspeed = 0, yspeed = 0) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -8,14 +8,15 @@ class Ball {
     }
 
     show() {
-        fill(0)
+        noStroke();
+        fill(255);
         ellipse(this.x, this.y, this.r);
     }
 
     // check the position of the ball if it's withing boundaries
     move() {
 
-        // if it leaves the width, change direction
+        // if it leaves the w, change direction
         if (this.x > width) {
             this.xspeed = -this.xspeed;
         }
@@ -33,27 +34,43 @@ class Ball {
             this.yspeed = Math.abs(this.yspeed)
         }
 
-        
+
 
         this.x += this.xspeed;
         this.y += this.yspeed;
     }
 
-   
+
 
     hits(brick) {
 
         // check if the circle is intersecting with the brick, still need to test if the ball is inside the brick
 
-        if(this.x + this.r >  brick.x &&
-            this.x - this.r < (brick.x + brick.w) &&
-            this.y + this.r >  brick.y &&
-            this.y - this.r < (brick.y + brick.h)) 
-         {  
-           return true; 
-         }
+
+
+        // if (this.x + this.r > brick.x &&
+        //     this.x - this.r < (brick.x + brick.w) &&
+        //     this.y + this.r > brick.y &&
+        //     this.y - this.r < (brick.y + brick.h)
+        // ) {
+        //     return true;
+        // }
+
+        var distX = Math.abs(this.x - brick.x - brick.w / 2);
+        var distY = Math.abs(this.y - brick.y - brick.h / 2);
+
+        if (distX > (brick.w / 2 + this.r)) { return false; }
+        if (distY > (brick.h / 2 + this.r)) { return false; }
+
+        if (distX <= (brick.w / 2)) { return true; }
+        if (distY <= (brick.h / 2)) { return true; }
+
+        var dx = distX - brick.w / 2;
+        var dy = distY - brick.h / 2;
+        return (dx * dx + dy * dy <= (this.r * this.r));
+
+
+
 
     }
-
-
 }

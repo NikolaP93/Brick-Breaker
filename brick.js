@@ -7,24 +7,34 @@ class Brick {
     }
 
     show() {
+        
         image(img, this.x, this.y, this.w, this.h);
+        
     }
+
+    showmain = () => {
+        
+        fill(255)
+        rect(this.x, this.y, this.w, this.h)
+    }
+
+
 
     // main brick movement
     move() {
-        if (this.x > 0) {
-            if (keyIsDown(LEFT_ARROW)) {
-                this.x -= 10;
-            }
+        
+        if(mouseX>this.w/2 && mouseX<width-this.w/2) {
+            this.x = mouseX - this.w/2 ;
         }
-        if (this.x < width - 50) {
-            if (keyIsDown(RIGHT_ARROW)) {
-                this.x += 10;
-            }
-        }
+        
+        
+        
+
+
+
     }
 
-    
+
 
 
 }
