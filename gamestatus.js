@@ -14,16 +14,10 @@ class GameStatus {
         
     }
 
-    newGame = () => {
-        
-        setup();
-        score = 0;
-        gameStatus = false;
-    }
+    
 
     displayLives = (lives) => {
         this.lives = lives;
-        
 
         for (let i = this.lives; i > 0; i--) {
             image(livesimg, 20 * i, height - (height * 5 / 100), 15, 15)

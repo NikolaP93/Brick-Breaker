@@ -1,5 +1,5 @@
 class Ball {
-    constructor(x = width / 2, y = height / 2, r = 10 + height / 500, xspeed = 0, yspeed = 0) {
+    constructor(x = random(width*1/5, width*4/5), y = height / 2, r = 10 + height / 500, xspeed = 0, yspeed = 0) {
         this.x = x;
         this.y = y;
         this.r = r;
@@ -11,6 +11,15 @@ class Ball {
         noStroke();
         fill(255);
         ellipse(this.x, this.y, this.r);
+    }
+
+    update() {
+        let history = [];
+        let v = createVector(ball.x,ball.y);
+        history.push(v.x,v.y);
+        for(i=0;i<history.length;i++) {
+            ellipse(v[i].x,v[i].y)
+        }
     }
 
     // check the position of the ball if it's withing boundaries
@@ -38,6 +47,7 @@ class Ball {
 
         this.x += this.xspeed;
         this.y += this.yspeed;
+        
     }
 
 

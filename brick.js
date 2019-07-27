@@ -1,14 +1,15 @@
 class Brick {
-    constructor(x = 300, y = 350, h = 30, w = 50) {
+    constructor(x = 300, y = 350, h = 30, w = 50,opacity=255) {
         this.x = x;
         this.y = y;
         this.h = h;
         this.w = w;
+        this.opacity = opacity;
     }
 
     show() {
-        
-        image(img, this.x, this.y, this.w, this.h);
+        fill(255,150,0,this.opacity);
+        rect(this.x, this.y, this.w, this.h);
         
     }
 
