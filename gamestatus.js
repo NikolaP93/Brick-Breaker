@@ -2,6 +2,8 @@
 
 class GameStatus {
 
+
+
     constructor(
         score = 0,
         gameStatus,
@@ -22,6 +24,8 @@ class GameStatus {
         }
 
     }
+
+    
 
     drawScore = () => {
         text('Score: ' + score, width - (width * 8 / 100), height - (height * 5 / 100), width - (width * 12 / 100), height - (height * 10 / 100));
